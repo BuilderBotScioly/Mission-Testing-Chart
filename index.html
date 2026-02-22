@@ -13,7 +13,7 @@
     <!-- LOGIN -->
     <section id="loginSection" class="card">
       <h2>Login</h2>
-      <p class="muted">This is a GitHub Pages (static) version. Login is a lock screen, not bank-level security.</p>
+      <p class="muted">GitHub Pages version: runs save on this device. Login is a lock screen.</p>
 
       <label>Username</label>
       <input id="username" placeholder="Enter username" autocomplete="username" />
@@ -32,45 +32,100 @@
     <!-- APP -->
     <section id="appSection" class="card hidden">
       <div class="row space-between">
-        <h2>Runs</h2>
+        <h2>Add Run</h2>
         <div class="row">
           <button id="exportBtn" class="secondary">Export CSV</button>
           <button id="logoutBtn" class="secondary">Log out</button>
         </div>
       </div>
 
-      <h3>Add Run</h3>
       <div class="grid">
         <div>
           <label>Date/Time</label>
           <input id="occurredAt" type="datetime-local" />
         </div>
         <div>
-          <label>Completed</label>
-          <select id="completed">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-        <div>
-          <label>Base Points</label>
-          <input id="basePoints" type="number" min="0" value="0" />
-        </div>
-        <div>
-          <label>Penalty Points</label>
-          <input id="penaltyPoints" type="number" min="0" value="0" />
-        </div>
-        <div>
-          <label>Bonus Points</label>
-          <input id="bonusPoints" type="number" min="0" value="0" />
-        </div>
-        <div>
-          <label>Total Score</label>
-          <input id="totalScore" type="number" readonly />
-        </div>
-        <div class="full">
           <label>Notes</label>
           <input id="notes" placeholder="optional" />
+        </div>
+      </div>
+
+      <h3>Rule Scoring</h3>
+
+      <div class="grid">
+        <div>
+          <label>Setup done in ≤ 30 minutes? (50 pts)</label>
+          <select id="setup30">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div>
+          <label>ASL: 2 printed copies presented? (25 pts)</label>
+          <select id="aslCopies">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div>
+          <label>ASL: proper format? (25 pts)</label>
+          <select id="aslFormat">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div>
+          <label>ASL: all actions included & accurate? (25 pts)</label>
+          <select id="aslAccurate">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label>ASL: labels & roman numerals correct? (25 pts)</label>
+          <select id="aslLabels">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Start Action completed? (100 pts)</label>
+          <select id="startAction">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Bell rung at end? (100 pts)</label>
+          <select id="bell">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+
+        <div>
+          <label>No adjustments during operation? (75 pts)</label>
+          <select id="noAdjustments">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <h3>12 Scorable Actions (50 pts each)</h3>
+      <p class="muted">Select Yes for each action you successfully completed.</p>
+      <div id="actionsWrap" class="grid"></div>
+
+      <div class="grid">
+        <div>
+          <label>Total Score (computed)</label>
+          <input id="totalScore" type="number" readonly />
         </div>
       </div>
 
@@ -83,10 +138,6 @@
           <thead>
             <tr>
               <th>Date</th>
-              <th>Completed</th>
-              <th>Base</th>
-              <th>Penalty</th>
-              <th>Bonus</th>
               <th>Total</th>
               <th>Notes</th>
               <th></th>
