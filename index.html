@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mission Possible Practice Scorer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Mission Possible Practice Scorer</h1>
+
+    <!-- LOGIN -->
+    <section id="loginSection" class="card">
+      <h2>Login</h2>
+      <p class="muted">This is a GitHub Pages (static) version. Login is a lock screen, not bank-level security.</p>
+
+      <label>Username</label>
+      <input id="username" placeholder="Enter username" autocomplete="username" />
+
+      <label>Password</label>
+      <input id="password" type="password" placeholder="Enter password" autocomplete="current-password" />
+
+      <div class="row">
+        <button id="loginBtn">Log in</button>
+        <button id="setCredsBtn" class="secondary">Set/Change Login</button>
+      </div>
+
+      <p id="loginMsg" class="msg"></p>
+    </section>
+
+    <!-- APP -->
+    <section id="appSection" class="card hidden">
+      <div class="row space-between">
+        <h2>Runs</h2>
+        <div class="row">
+          <button id="exportBtn" class="secondary">Export CSV</button>
+          <button id="logoutBtn" class="secondary">Log out</button>
+        </div>
+      </div>
+
+      <h3>Add Run</h3>
+      <div class="grid">
+        <div>
+          <label>Date/Time</label>
+          <input id="occurredAt" type="datetime-local" />
+        </div>
+        <div>
+          <label>Completed</label>
+          <select id="completed">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div>
+          <label>Base Points</label>
+          <input id="basePoints" type="number" min="0" value="0" />
+        </div>
+        <div>
+          <label>Penalty Points</label>
+          <input id="penaltyPoints" type="number" min="0" value="0" />
+        </div>
+        <div>
+          <label>Bonus Points</label>
+          <input id="bonusPoints" type="number" min="0" value="0" />
+        </div>
+        <div>
+          <label>Total Score</label>
+          <input id="totalScore" type="number" readonly />
+        </div>
+        <div class="full">
+          <label>Notes</label>
+          <input id="notes" placeholder="optional" />
+        </div>
+      </div>
+
+      <button id="addRunBtn">Save Run</button>
+      <p id="appMsg" class="msg"></p>
+
+      <h3>History</h3>
+      <div class="tableWrap">
+        <table id="runsTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Completed</th>
+              <th>Base</th>
+              <th>Penalty</th>
+              <th>Bonus</th>
+              <th>Total</th>
+              <th>Notes</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
